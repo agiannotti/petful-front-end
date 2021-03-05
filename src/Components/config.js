@@ -1,3 +1,3 @@
-const baseUrl = process.env.baseUrl || 'http://localhost:8080/api';
+const baseUrl = process.env.baseUrl || 'https://petful-ajg.herokuapp.com/api';
 
 export default baseUrl;
