@@ -1,0 +1,18 @@
+.nav {
+  width: 100%;
+  display: flex;
+  padding: 25px;
+  background-color: hsl(220, 22%, 57%);
+}
+
+.title {
+  text-align: center;
+  font-size: 25px;
+  text-decoration: none;
+}
+
+@media (min-width: 800px) {
+  .nav {
+    margin-bottom: 12px;
+  }
+}
