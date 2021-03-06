@@ -8,6 +8,7 @@ class Adopt extends React.Component {
     dogs: [],
     people: [],
     name: '',
+    isAdding: true,
   };
 
   componentDidMount() {
@@ -72,6 +73,7 @@ class Adopt extends React.Component {
 
   handleAddPerson = (e) => {
     e.preventDefault();
+    this.setState({ isAdding: false });
     ApiService.addPerson(this.state.name).then(() => {
       this.name = this.state.name;
       this.setState({
@@ -178,18 +180,22 @@ class Adopt extends React.Component {
       <div>
         <div>{this.renderPets()}</div>
         <fieldset className='queue'>
-          <h3>Add Name to List: </h3>
-          <form onSubmit={this.handleAddPerson}>
-            <label htmlFor='fullName'>Name: </label>
-            <input
-              name='fullName'
-              value={this.state.name}
-              onChange={this.handleOnChange}
-              placeholder='Enter your name'
-              required
-            ></input>
-            <button type='submit'>Add Name</button>
-          </form>
+          {this.state.isAdding === true && (
+            <>
+              <h3>Add Name to List: </h3>
+              <form onSubmit={this.handleAddPerson}>
+                <label htmlFor='fullName'>Name: </label>
+                <input
+                  name='fullName'
+                  value={this.state.name}
+                  onChange={this.handleOnChange}
+                  placeholder='Enter your name'
+                  required
+                ></input>
+                <button type='submit'>Add Name</button>
+              </form>
+            </>
+          )}
           <ul>
             {this.state.people.map((person, i) => {
               return <li key={i}>{person}</li>;
