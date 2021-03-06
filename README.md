@@ -25,11 +25,7 @@ Client
 
 - https://github.com/agiannotti/petful-front-end
 
--
-
 Server
-
--
 
 - https://petful-ajg.herokuapp.com/
 
