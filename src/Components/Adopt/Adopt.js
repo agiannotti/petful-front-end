@@ -9,6 +9,7 @@ class Adopt extends React.Component {
     people: [],
     name: '',
     isAdding: true,
+    feedback: '',
   };
 
   componentDidMount() {
@@ -86,12 +87,17 @@ class Adopt extends React.Component {
         } else {
           this.adoptDog();
         }
-        ApiService.addPerson('Elvira').then(() => {
-          this.setState({
-            people: [...this.state.people, 'Elvira'],
+        if (this.state.cats.length !== 0 || this.state.dogs.length !== 0) {
+          ApiService.addPerson('Clarice').then(() => {
+            this.setState({
+              people: [...this.state.people, 'Clarice'],
+            });
           });
-        });
-      }, 5000);
+        } else {
+          this.clearInterval(this.adoptInterval);
+          this.setState({ feedback: 'no more animals to adopt' });
+        }
+      }, 1000);
     });
   };
 
@@ -105,31 +111,41 @@ class Adopt extends React.Component {
   renderPets() {
     return (
       <div>
-        <div>
-          {this.renderPet(this.state.dogs[0], 'Dog')}
+        {console.log(this.state.dogs)}
+        {this.state.dogs !== [] ? (
+          <div>
+            {this.renderPet(this.state.dogs[0], 'Dog')}
 
-          <button
-            className='adopt-button'
-            onClick={this.handleDog}
-            type='button'
-            disabled={this.state.people[0] !== this.name}
-          >
-            Adopt this Dog!
-          </button>
-        </div>
+            <button
+              className='adopt-button'
+              onClick={this.handleDog}
+              type='button'
+              disabled={this.state.people[0] !== this.name}
+            >
+              Adopt this Dog!
+            </button>
+          </div>
+        ) : (
+          <p>no more doge</p>
+        )}
         <br />
         <br />
-        <div>
-          {this.renderPet(this.state.cats[0], 'Cat')}
-          <button
-            className='adopt-button'
-            onClick={this.handleCat}
-            type='button'
-            disabled={this.state.people[0] !== this.name}
-          >
-            Adopt this Cat!
-          </button>
-        </div>
+        {this.state.cats !== [] ? (
+          <div>
+            {this.renderPet(this.state.cats[0], 'Dog')}
+
+            <button
+              className='adopt-button'
+              onClick={this.handleCat}
+              type='button'
+              disabled={this.state.people[0] !== this.name}
+            >
+              Adopt this Cat!
+            </button>
+          </div>
+        ) : (
+          <p>no more cat</p>
+        )}
         <br />
         <br />
       </div>
@@ -166,19 +182,25 @@ class Adopt extends React.Component {
     e.preventDefault();
     this.adoptDog();
     alert('New Dog confirmed!');
+    this.setState({ isAdding: true });
   };
 
   handleCat = (e) => {
     e.preventDefault();
     this.adoptCat();
     alert('New Cat confirmed!');
+    this.setState({ isAdding: true });
   };
 
   render() {
     this.firstInLine();
     return (
       <div>
-        <div>{this.renderPets()}</div>
+        {this.state.feedback === '' ? (
+          <div>{this.renderPets()}</div>
+        ) : (
+          <h3>{this.state.feedback}</h3>
+        )}
         <fieldset className='queue'>
           {this.state.isAdding === true && (
             <>
