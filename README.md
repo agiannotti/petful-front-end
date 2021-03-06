@@ -4,7 +4,7 @@ A user interested in adopting pets can join a line to adopt.
 
 Acceptance criteria
 
-When A user visits the adoption page:
+When a user visits the adoption page:
 
 A user can see a list of other people currently in line.
 A user submit my name and be added to the end of the line.
