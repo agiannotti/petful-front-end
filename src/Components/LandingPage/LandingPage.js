@@ -7,7 +7,12 @@ class LandingPage extends React.Component {
       <div>
         <section>
           <div className='landing'>
-            <h1>Adopt</h1>
+            <h1>Find your future furry companion!</h1>
+            <p>
+              Petful was designed to streamline the adoption process and help
+              you find the right pet quickly and efficiently.
+            </p>
+            <p></p>
           </div>
         </section>
         <section className='main'></section>
