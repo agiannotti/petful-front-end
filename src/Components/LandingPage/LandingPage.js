@@ -12,7 +12,9 @@ class LandingPage extends React.Component {
               Petful was designed to streamline the adoption process and help
               you find the right pet quickly and efficiently.
             </p>
-            <p></p>
+            <p>You can begin the adoption process by adding your name to a queue</p>
+            <p>While in line, you can see your current position and others who are in the waiting process</p>
+            <p>When it's your turn in line, you can select to either adopt a dog, or a cat</p>
           </div>
         </section>
         <section className='main'></section>
