@@ -2,7 +2,7 @@
 
 A user interested in adopting pets can join a line to adopt.
 
-Acceptance criteria
+Acceptance criteria:
 
 When a user visits the adoption page:
 
