@@ -12,6 +12,7 @@ body {
   text-align: center;
   justify-content: center;
   margin: auto;
+ 
 }
 
 a,
@@ -30,3 +31,10 @@ a:active {
 a:visited {
   color: white;
 }
+
+@media (min-width: 800px) {
+  body {
+    width: 50%;
+  }
+}
+
